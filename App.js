@@ -9,7 +9,7 @@ const App = StackNavigator({
   HomeScreen: {screen: HomeScreen},
   SearchTabNavigator: {screen: SearchTabNavigator}
 }, {
-  initialRouteName: 'SearchTabNavigator'
+  initialRouteName: 'HomeScreen'
 })
 
 export default App

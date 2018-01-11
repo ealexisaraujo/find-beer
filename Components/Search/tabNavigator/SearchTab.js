@@ -11,6 +11,7 @@ import axios from 'axios'
 
 import {Container, Content} from 'native-base'
 import SearchHeader from '../SearchHeader'
+import SearchBody from '../SearchBody'
 
 export default class SearchTab extends Component {
 
@@ -20,7 +21,8 @@ static navigationOptions = {
 
 state={
   searchBeer: '',
-  beerData: {}
+  beerData: {},
+  beerFound: false
 }
 
 beerSearch = () => {
@@ -32,7 +34,28 @@ beerSearch = () => {
     .then((response) => {
       var data = response.data.data[0] ? response.data.data[0]: false
       console.log(data)
+      if (data) {
+        this.setState({
+          beerData: data,
+          beerFound: true
+        })
+      }
+  }).catch((error) =>{
+    this.setState({
+      beerFound: false
+    })
   })
+}
+
+renderContent=() => {
+  if (this.state.beerFound) {
+    return <SearchBody
+      beerData={this.state.beerData}
+    />
+  }
+  else {
+    console.log("beer not found")
+  }
 }
 
   render () {
@@ -44,6 +67,7 @@ beerSearch = () => {
           beerSearch={this.beerSearch}
         />
         <Content>
+          {this.renderContent()}
         </Content>
       </Container>
     )
