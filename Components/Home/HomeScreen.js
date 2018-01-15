@@ -11,12 +11,19 @@ import {
 import {Button} from 'native-base'
 var backgroundImage = require('../../assets/HomeScreen/home_screen_background.jpg')
 
+import * as firebase from 'firebase'
+
 export default class HomeScreen extends Component {
 
   static navigationOptions = {
     header: null
   }
-  
+
+componentDidMount() {
+  firebase.auth().signInWithEmailAndPassword("ala1289@gmail.com", "password")
+}
+
+
   render () {
     return (
       <View style={styles.homeScreenView}>

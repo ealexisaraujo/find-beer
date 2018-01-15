@@ -10,8 +10,21 @@ import {
 } from 'react-native'
 
 import {Content, ListItem, List} from 'native-base'
+import * as firebase from 'firebase'
 
 export default class SearchBody extends Component {
+  addToFavorites = async (beerName) => {
+    //get current User
+    currentUser = await firebase.auth().currentUser
+
+    //get a unique key
+    var databaseRef = await firebase.database().ref(currentUser.uid).child('favorites').push()
+
+    //update the beername at the unique key
+    databaseRef.set({
+      'name': beerName
+    })
+  }
   render () {
     const beerData = this.props.beerData
 

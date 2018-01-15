@@ -25,6 +25,13 @@ state={
   beerFound: false
 }
 
+componentDidMount() {
+        if (this.props.navigation.state.params !== undefined) {
+            this.setState({ searchBeer: this.props.navigation.state.params.beerName }, () => this.beerSearch())
+        }
+    }
+
+
 beerSearch = () => {
   Keyboard.dismiss()
   const beerName=this.state.searchBeer.toLowerCase();

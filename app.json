@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "find-beer",
-    "description": "This project is really great.",
+    "description": "This project is really great. Github: https://github.com/ciberdarc/find-beer",
     "slug": "find-beer",
     "privacy": "public",
     "sdkVersion": "24.0.0",
