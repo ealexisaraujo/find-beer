@@ -5,3 +5,4 @@ npm-debug.*
 \.DS_Store
 
 \.vscode/settings\.json
+package-lock.json
